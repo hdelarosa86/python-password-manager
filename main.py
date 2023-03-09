@@ -10,9 +10,9 @@ def save():
     username = username_entry.get()
     password = password_entry.get()
 
-    website_entry.delete(0, len(website))
-    username_entry.delete(0, len(username))
-    password_entry.delete(0, len(password))
+    website_entry.delete(0, END)
+    username_entry.delete(0, END)
+    password_entry.delete(0, END)
     with open('data.txt', mode='a') as file:
         file.write(f'{website}  |  {username}  |  {password}\n')
 
