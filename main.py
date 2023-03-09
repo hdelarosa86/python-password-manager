@@ -4,6 +4,19 @@ FONT_SIZE = 14
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 
+
+def save():
+    website = website_entry.get()
+    username = username_entry.get()
+    password = password_entry.get()
+
+    website_entry.delete(0, len(website))
+    username_entry.delete(0, len(username))
+    password_entry.delete(0, len(password))
+    with open('data.txt', mode='a') as file:
+        file.write(f'{website}  |  {username}  |  {password}\n')
+
+
 # ---------------------------- UI SETUP ------------------------------- #
 
 # Window
@@ -30,6 +43,7 @@ password_label.grid(column=0, row=3)
 
 # Entries
 website_entry = Entry(width=38)
+website_entry.focus()
 website_entry.grid(column=1, row=1, columnspan=2)
 
 username_entry = Entry(width=38)
@@ -42,7 +56,7 @@ password_entry.grid(column=1, row=3)
 generate_password_button = Button(text='Generate Password')
 generate_password_button.grid(column=2, row=3)
 
-add_button = Button(text='Add', width=36)
+add_button = Button(text='Add', width=36, command=save)
 add_button.grid(column=1, row=4, columnspan=3)
 
 
